@@ -32,8 +32,7 @@ const Home = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Implement the logic to update the user with the updatedUser object
-    // Call an API or perform any other necessary operations to update the user
+    
     setEditing(false);
   };
   const calculateTotalBooks = (order) => {

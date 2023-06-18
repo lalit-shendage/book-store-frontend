@@ -19,13 +19,10 @@ const SignIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Call the sign-in function from the AuthContext and pass email and password
       await signIn(email, password);
-      // Handle successful sign-in, such as navigating to the dashboard
       console.log('User signed in successfully!');
-      navigate('/Home'); // Navigate to the dashboard page
+      navigate('/Home'); 
     } catch (error) {
-      // Handle sign-in error
       console.error('Error signing in:', error);
     }
   };
