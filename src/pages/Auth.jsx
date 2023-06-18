@@ -16,7 +16,7 @@ const Auth = () => {
         <div className="card" onClick={handleClick}>
           <SignUp />
          </div>
-         <span> if you already have an account:<button>sign in</button></span>
+         <span className="alt"> if you already have an account:<button className="btnn">sign in</button></span>
 
         </FrontSide>
 
@@ -25,8 +25,7 @@ const Auth = () => {
             <div className="card" onClick={handleClick}>
           <SignIn />
           </div>
-          <span>Dont have an account? <button>Sign up</button></span>
-
+          <span className="alt">Dont have an account? <button className="btnn">Sign up</button></span>
         </BackSide>
       </Flippy>
     </div>

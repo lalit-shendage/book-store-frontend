@@ -43,29 +43,27 @@ const SignUp = () => {
   };
 
   return (
-    <div className="container mt-4" style={{ maxWidth: '400px' }}>
-      <h2 >Sign Up</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3 " >
-          <label className="form-label"> Name:</label>
-          <input type="text" className="form-control" value={name} onChange={handleBusinessNameChange} />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Email:</label>
-          <input type="email" className="form-control" value={email} onChange={handleEmailChange} />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Password:</label>
-          <input type="password" className="form-control" value={password} onChange={handlePasswordChange} />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Confirm Password:</label>
-          <input type="password" className="form-control" value={confirmPassword} onChange={handleConfirmPasswordChange} />
-        </div>
-        <button type="submit" className="btn btn-primary">Sign Up</button>
-      </form>
-     
-    </div>
+    <div className="container">
+  <div className="signup-form">
+    <h2>Sign Up</h2>
+    <form onSubmit={handleSubmit}>
+      <div className="form-group">
+        <input type="text" className="form-control" placeholder="Name" value={name} onChange={handleBusinessNameChange} />
+      </div>
+      <div className="form-group">
+        <input type="email" className="form-control" placeholder="Email" value={email} onChange={handleEmailChange} />
+      </div>
+      <div className="form-group">
+        <input type="password" className="form-control" placeholder="Password" value={password} onChange={handlePasswordChange} />
+      </div>
+      <div className="form-group">
+        <input type="password" className="form-control" placeholder="Confirm Password" value={confirmPassword} onChange={handleConfirmPasswordChange} />
+      </div>
+      <button type="submit" className="btn btn-primary">Sign Up</button>
+    </form>
+  </div>
+</div>
+
   );
 };
 

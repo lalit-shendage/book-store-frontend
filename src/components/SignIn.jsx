@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 
 const SignIn = () => {
@@ -28,7 +28,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="container mt-4" style={{ maxWidth: '400px' }} >
+    <div className="signin-form mt-4" style={{ maxWidth: '400px' }} >
       <h2 className="text-center">Sign In</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
@@ -57,9 +57,6 @@ const SignIn = () => {
         </div>
         <button type="submit" className="btn btn-primary">Sign In</button>
       </form>
-      <p>
-        Don't have an account? <Link to="/signup">Sign Up</Link>
-      </p>
     </div>
   );
 };

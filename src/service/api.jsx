@@ -90,3 +90,29 @@ export const signUp = async (email, name, password) => {
     }
   };
   
+  export const editUser =async (updatedUser)=>{
+    try {
+      const authToken = localStorage.getItem('authToken');
+      const response = await fetch(`${BASE_URL}updateUser`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'auth-token':authToken,
+        },
+        body: JSON.stringify(updatedUser),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Error confirming order');
+      }
+  
+      const data = await response.json();
+      const currentUser = JSON.parse(localStorage.getItem('user'));
+      const updatedCurrentUser = { ...currentUser, ...updatedUser };
+      localStorage.setItem('user', JSON.stringify(updatedCurrentUser));
+      window.location.reload();
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }

@@ -3,7 +3,7 @@ import { AuthContext } from '../contexts/AuthContext';
 import '../assets/Home.css'
 
 const Home = () => {
-  const { token, getUserOrder } = useContext(AuthContext);
+  const { token, getUserOrder, editUser } = useContext(AuthContext);
   const [orders, setOrders] = useState([]);
   const [editing, setEditing] = useState(false);
   const [updatedUser, setUpdatedUser] = useState({});
@@ -32,7 +32,7 @@ const Home = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+    editUser(updatedUser)
     setEditing(false);
   };
   const calculateTotalBooks = (order) => {
@@ -46,9 +46,11 @@ const Home = () => {
   return (
     <div>
       {user && (
-        <div>
+        <div className='container'>
+          <div className="Userdetails">
           <h2>User Details</h2>
           {editing ? (
+            <>
            <form className="user-form" onSubmit={handleSubmit}>
            <label className="form-label">
              Name:
@@ -64,7 +66,7 @@ const Home = () => {
            </label>
            <button className="form-button" type="submit">Save</button>
          </form>
-         
+         </>
           ) : (
             <div className="user-details">
             <p className="user-info">Name: {user.name}</p>
@@ -74,7 +76,8 @@ const Home = () => {
           </div>
           
           )}
-
+        </div>
+        <div className="order">
           <h2>User Orders</h2>
           {orders.length > 0 ? (
              <ul className="order-list">
@@ -83,13 +86,14 @@ const Home = () => {
                  <p className="order-id">Order ID: {order._id}</p>
                  <p className="total-books">Total Books: {calculateTotalBooks(order)}</p>
                  <p className="order-total">Order Total: {order.totalAmount}</p>
-                 {/* Render other order details */}
+                 
                </li>
              ))}
            </ul>
           ) : (
             <p>No orders found.</p>
           )}
+        </div>
         </div>
       )}
     </div>

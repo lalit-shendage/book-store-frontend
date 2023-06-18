@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
-import { signIn, signUp, getUserOrders } from '../service/api';
+import { signIn, signUp, getUserOrders, editUser } from '../service/api';
 
 const AuthContext = createContext();
 
@@ -53,19 +53,27 @@ const getUserOrder=async(user)=>{
     throw error;
   }
 }
+const handleEditUser =async (updatedUser)=>{
+  
+  try {
+    const data = await editUser(updatedUser)
+  return data;
+  } catch (error) {
+    console.log('error ', error);
+    throw error;
+  }
+}
 
-  // Log out user and clear authentication token
+  // Log out user and clear localstorage
   const handleLogout = () => {
     setUser(null);
     setToken('');
-    // Remove the token from localStorage
     localStorage.removeItem('authToken');
     localStorage.removeItem('user');
     localStorage.removeItem('cart');
   };
 
-  // Provide the authentication context to the app
-  // Provide the authentication context to the app
+ 
   return (
     <AuthContext.Provider
       value={{
@@ -74,7 +82,8 @@ const getUserOrder=async(user)=>{
         signIn: handleSignIn,
         signUp: handleSignUp,
         logout: handleLogout,
-        getUserOrder
+        getUserOrder,
+        editUser:handleEditUser
       }}
     >
       {children}

@@ -10,3 +10,14 @@
     padding: 1rem;
     background-color: antiquewhite;
 }
+.books{
+    display: flex;
+}
+
+.filter{
+    margin-right: 5rem;
+}
+.checklist-container{
+    width: 130px;
+}
+

@@ -1,21 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import { getAllBooks } from '../service/api';
-import BookCard from '../components/BookCard'
-import '../assets/books.css'
+import BookCard from '../components/BookCard';
+import '../assets/books.css';
+import Checklist from '../components/Checklist';
 
 const Listings = () => {
   const [books, setBooks] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedOptions, setSelectedOptions] = useState({
+    country: [],
+    language: [],
+    pages: [],
+    price: [],
+  });
+  const [filteredBooks, setFilteredBooks] = useState([]);
 
   useEffect(() => {
     fetchBooks();
   }, []);
 
+  useEffect(() => {
+    applyFilters();
+  }, [selectedOptions]);
+
+  useEffect(() => {
+    if (searchTerm === '') {
+      setFilteredBooks(books);
+    } else {
+      const filtered = books.filter((book) =>
+        book.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredBooks(filtered);
+    }
+  }, [books, searchTerm]);
+
   const fetchBooks = async () => {
     try {
       const data = await getAllBooks();
       setBooks(data.books);
-      console.log(data)
     } catch (error) {
       console.error('Error fetching books:', error);
     }
@@ -25,29 +47,71 @@ const Listings = () => {
     setSearchTerm(e.target.value);
   };
 
-  const filteredBooks = books.filter((book) =>
-    book.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const applyFilters = () => {
+    const filtered = books.filter((book) => {
+      const { country, language, pages, price } = selectedOptions;
+      const isInCountry =
+        country.length === 0 || country.includes(book.country);
+      const isInLanguage =
+        language.length === 0 || language.includes(book.language);
+      const isInPages =
+        pages.length === 0 ||
+        pages.some((option) => isPageInRange(book.pages, option));
+      const isInPrice =
+        price.length === 0 ||
+        price.some((option) => isPriceInRange(book.price, option));
+      return isInCountry && isInLanguage && isInPages && isInPrice;
+    });
+
+    setFilteredBooks(filtered);
+  };
+
+  const isPageInRange = (bookPages, option) => {
+    if (option === '500<') {
+      return bookPages >= 500;
+    }
+
+    const [min, max] = option.split('-').map((val) => parseInt(val, 10));
+    return bookPages >= min && bookPages <= max;
+  };
+
+  const isPriceInRange = (bookPrice, option) => {
+    if (option === '300<') {
+      return bookPrice >= 300;
+    }
+
+    const [min, max] = option.split('-').map((val) => parseInt(val, 10));
+    return bookPrice >= min && bookPrice <= max;
+  };
 
   return (
-    <div>
+    <>
       <input
         type="text"
         value={searchTerm}
         onChange={handleSearch}
         placeholder="Search books"
       />
-      <div className="card-container">
-        {searchTerm === ''
-          ? books.map((book) => (
-              <BookCard key={book._id} book={book} />
-            ))
-          : filteredBooks.map((book) => (
+      <div className="books">
+        <div className="filter">
+          <Checklist
+            selectedOptions={selectedOptions}
+            setSelectedOptions={setSelectedOptions}
+          />
+          <button onClick={applyFilters}>Filter</button>
+        </div>
+        <div className="listing-container">
+          <div className="card-container">
+            {filteredBooks.map((book) => (
               <BookCard key={book._id} book={book} />
             ))}
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
+
+
 
 export default Listings;

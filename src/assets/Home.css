@@ -29,6 +29,8 @@
     margin-top: 5px;
   }
   .user-form {
+   
+    max-width: 500px;
     margin-top: 20px;
   }
   
@@ -83,6 +85,20 @@
     background-color: #45a049;
   }
   
+  .container{
+    display: flex;
+  }
+
+  .Userdetails{
+    width: 25%;
+    margin: 1rem 3rem;
+  }
+  .order{
+    width: 30%;
+    margin: 1rem ;
+  }
   
-  
+  .Userdetails,.order{
+    flex: 1;
+  }
   

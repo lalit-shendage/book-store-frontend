@@ -1,10 +1,15 @@
 .card{
-    height: 500px;
+    height: 350px;
     width: 100%;
     justify-content: center;
     display: flex;
-    flex-direction: row;
-    
+    flex-direction: row;   
+}
+.flippy-cardContainer-wrapper {
+  background-color: rgba(8, 8, 8, 0.5);
+  background-size: cover;
+  background-position: center;
+  
 }
 
 .signin-container {
@@ -13,10 +18,10 @@
   }
   
   .signin-form {
-    background-color: #f9f9f9;
-    padding: 20px;
+    background-color: rgba(249, 249, 249, 0.5);
+        padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 10px 10px 10px rgba(83, 94, 255, 0.3);
   }
   
   .form-group {
@@ -28,7 +33,9 @@
     font-weight: bold;
     margin-bottom: 5px;
   }
-  
+  .btn{
+    margin-top: 1rem;
+  }
   .form-input {
     width: 100%;
     padding: 8px;
@@ -50,15 +57,21 @@
     background-color: #0056b3;
   }
   .signup-container {
-    width: 300px;
-    margin: auto;
+    width: 400px;
+    
   }
+  .signup-form .form-group {
+  display: flex;
+  flex-direction: column;
   
+}
+
+
   .signup-form {
-    background-color: #f9f9f9;
-    padding: 20px;
+    background-color: rgba(249, 249, 249, 0.5);
+        padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 10px 10px 10px rgba(83, 94, 255, 0.3);
   }
   .signup-button {
     width: 100%;
@@ -73,4 +86,19 @@
   .signup-button:hover {
     background-color: #0056b3;
   }
+  .auth-container{
+   
+    margin-top: 5vh;
+    justify-content: center;
+    padding-left: 25vw;
+    max-width: 400px;
+    min-width: 200px;
+  }
+ .alt{
+  background-color: rgba(8, 8, 8, 0.5);
+  color: #ccc;
+ }
+ .btnn{
   
+  background-color: #ddab22;
+ }
