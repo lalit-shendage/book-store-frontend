@@ -67,53 +67,55 @@ body{
   }
   .Userdetails{
     align-items: center;
-    width: 25%; 
     margin-top: 1rem;
   }
   .order{
-    width: 30%;
+   
     margin: 0 ;
   }
   
   .Userdetails,.order{
     flex: 1;
   }
-  
   .card-home {
     margin: auto;
     color: #ccc;
     min-width: 250px;
-    width: 25rem;
+    width: 28rem;
     height: 280px;
     background-color: rgba(33, 33, 33, 0.8);
-    box-shadow: 15px 15px 30px #191919,
-                 -15px -15px 30px #292929;
-    transition: border-radius cubic-bezier(0.075, 0.82, 0.165, 1) 1s,
-                 transform cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
-   }
-   
-   .card-home:hover {
+    box-shadow: 15px 15px 30px #191919, -15px -15px 30px #292929;
+    transition: border-radius cubic-bezier(0.075, 0.82, 0.165, 1) 1s, transform cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
+  }
+  
+  .card-home:hover {
     border-bottom-right-radius: 50px;
     border-top-left-radius: 50px;
     transform: scale(1.05);
-   }
-   .card-home-order {
+  }
+  
+  .card-home-order {
     margin: auto;
     margin-top: 2rem;
     color: #ccc;
     min-width: 200px;
-    width: 25rem;
+    width: 28rem;
     height: 150px;
     background-color: rgba(33, 33, 33, 0.8);
-    box-shadow: 15px 15px 30px #191919,
-                 -15px -15px 30px #292929;
-    transition: border-radius cubic-bezier(0.075, 0.82, 0.165, 1) 1s,
-                 transform cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
-   }
-   
-   .card-home-order:hover {
+    box-shadow: 15px 15px 30px #191919, -15px -15px 30px #292929;
+    transition: border-radius cubic-bezier(0.075, 0.82, 0.165, 1) 1s, transform cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
+  }
+  
+  .card-home-order:hover {
     border-bottom-right-radius: 50px;
     border-top-left-radius: 50px;
     transform: scale(1.05);
-   }
-   
+  }
+  
+  @media (max-width: 768px) {
+    .card-home,
+    .card-home-order {
+      width: 20rem;
+    }
+  }
+  

@@ -35,11 +35,11 @@ const Navbar = () => {
               Cart
             </Link>
           </li>
-        </ul>
-      </div>
-      <button className="btn-primary" onClick={handleLogout}>
+          <button className="btn-primary" onClick={handleLogout}>
         Logout
       </button>
+        </ul>
+      </div>
     </nav>
   );
 };

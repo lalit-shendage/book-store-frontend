@@ -35,8 +35,7 @@ const SignUp = () => {
       }
       
       await signUp(email, password, name);
-      console.log('User signed up successfully!');
-      
+      console.log('User signed up successfully!');      
     } catch (error) {
       console.error('Error signing up:', error);
     }

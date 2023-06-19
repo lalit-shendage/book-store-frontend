@@ -106,13 +106,12 @@ const Listings = () => {
   };
   return (
     <>
-   
       <input
         type="text"
         value={searchTerm}
         onChange={handleSearch}
         placeholder="Search books"
-        className='input-search'
+        className='input-'
       />
       <div className="books">
         {windowWidth > 720 || showChecklist ? (

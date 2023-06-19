@@ -63,9 +63,7 @@
   background-color: rgba(8, 8, 8, 0.8);
 }
 .book {
-  margin: auto;
-  margin-right: 1rem;
-  margin-top: 3rem;
+  margin: 3rem 2rem;
   position: relative;
   border-radius: 10px;
   width: 220px;
@@ -168,7 +166,7 @@ select option {
   font-weight: bold;
 }
 .filters-button{
-margin: auto;
+  margin: auto;
   width: 100px;
   margin-top: 1rem;
   color: #fff;

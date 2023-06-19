@@ -20,10 +20,11 @@ const AuthProvider = ({ children }) => {
     try {
       const data = await signIn(email, password);
       setToken(data.token);
+      console.log(data)
       localStorage.setItem('authToken', data.token);
-      localStorage.setItem('user', JSON.stringify(data.user)); // Save user in localStorage
+      localStorage.setItem('user', JSON.stringify(data.user)); 
       await setUser(data.user);
-      await console.log(user);
+       console.log(user);
     } catch (error) {
       console.error('Error signing in:', error);
       throw error;
@@ -36,8 +37,7 @@ const AuthProvider = ({ children }) => {
     try {
       const data = await signUp(email, name, password);
       setToken(data.token);
-      // Store the token in localStorage
-      // localStorage.setItem('authToken', data.token);
+     
     } catch (error) {
       console.error('Error signing up:', error);
       throw error;

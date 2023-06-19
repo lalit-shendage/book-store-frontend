@@ -51,6 +51,7 @@ const Cart = () => {
     if (user && user.address) {
       setCheckout(true);
     } else {
+      window.alert("please add address in your profile")
       navigate("/Home");
     }
   };

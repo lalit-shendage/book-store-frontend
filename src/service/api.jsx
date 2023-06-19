@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:5000/';
+const BASE_URL = 'https://bookstore-backend-n9dn.onrender.com/';
 
 export const signUp = async (email, name, password) => {
     try {
