@@ -31,86 +31,72 @@ const Checklist = ({ selectedOptions, setSelectedOptions }) => {
     const [min, max] = option.split('-').map((val) => parseInt(val, 10));
     return bookPrice >= min && bookPrice <= max;
   };
+  const handleDropdownChange = (optionType, selectedOption) => {
+    setSelectedOptions((prevOptions) => ({
+      ...prevOptions,
+      [optionType]: selectedOption !== 'All' ? [selectedOption] : [],
+    }));
+  };
   return (
     <div className="checklist-container">
       <div className="checklist-group">
         <h3>Country</h3>
-        {countryOptions.map((option) => (
-          <label key={option}>
-            <input
-              type="checkbox"
-              checked={selectedOptions.country.includes(option)}
-              onChange={() => {
-                const updatedOptions = selectedOptions.country.includes(option)
-                  ? selectedOptions.country.filter((item) => item !== option)
-                  : [...selectedOptions.country, option];
-                handleOptionSelect('country', updatedOptions);
-              }}
-            />
-            {option}
-            <br/>
-          </label>
-        ))}
+        <select
+          value={selectedOptions.country.length === 1 ? selectedOptions.country[0] : 'All'}
+          onChange={(e) => handleDropdownChange('country', e.target.value)}
+        >
+          <option value="All">All</option>
+          {countryOptions.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
       </div>
 
       <div className="checklist-group">
         <h3>Language</h3>
-        {languageOptions.map((option) => (
-          <label key={option}>
-            <input
-              type="checkbox"
-              checked={selectedOptions.language.includes(option)}
-              onChange={() => {
-                const updatedOptions = selectedOptions.language.includes(option)
-                  ? selectedOptions.language.filter((item) => item !== option)
-                  : [...selectedOptions.language, option];
-                handleOptionSelect('language', updatedOptions);
-              }}
-            />
-            {option}
-            <br />
-          </label>
-        ))}
+        <select
+          value={selectedOptions.language.length === 1 ? selectedOptions.language[0] : 'All'}
+          onChange={(e) => handleDropdownChange('language', e.target.value)}
+        >
+          <option value="All">All</option>
+          {languageOptions.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
       </div>
 
       <div className="checklist-group">
         <h3>Pages</h3>
-        {pagesOptions.map((option) => (
-          <label key={option}>
-            <input
-              type="checkbox"
-              checked={selectedOptions.pages.includes(option)}
-              onChange={() => {
-                const updatedOptions = selectedOptions.pages.includes(option)
-                  ? selectedOptions.pages.filter((item) => item !== option)
-                  : [...selectedOptions.pages, option];
-                handleOptionSelect('pages', updatedOptions);
-              }}
-            />
-            {option}
-            <br />
-          </label>
-        ))}
+        <select
+          value={selectedOptions.pages.length === 1 ? selectedOptions.pages[0] : 'All'}
+          onChange={(e) => handleDropdownChange('pages', e.target.value)}
+        >
+          <option value="All">All</option>
+          {pagesOptions.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
       </div>
 
       <div className="checklist-group">
         <h3>Price</h3>
-        {priceOptions.map((option) => (
-          <label key={option}>
-            <input
-              type="checkbox"
-              checked={selectedOptions.price.includes(option)}
-              onChange={() => {
-                const updatedOptions = selectedOptions.price.includes(option)
-                  ? selectedOptions.price.filter((item) => item !== option)
-                  : [...selectedOptions.price, option];
-                handleOptionSelect('price', updatedOptions);
-              }}
-            />
-            {option}
-            <br />
-          </label>
-        ))}
+        <select
+          value={selectedOptions.price.length === 1 ? selectedOptions.price[0] : 'All'}
+          onChange={(e) => handleDropdownChange('price', e.target.value)}
+        >
+          <option value="All">All</option>
+          {priceOptions.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
       </div>
     </div>
   );

@@ -14,6 +14,8 @@ const Listings = () => {
     price: [],
   });
   const [filteredBooks, setFilteredBooks] = useState([]);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [showChecklist, setShowChecklist] = useState(false);
 
   useEffect(() => {
     fetchBooks();
@@ -33,6 +35,18 @@ const Listings = () => {
       setFilteredBooks(filtered);
     }
   }, [books, searchTerm]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const fetchBooks = async () => {
     try {
@@ -83,7 +97,13 @@ const Listings = () => {
     const [min, max] = option.split('-').map((val) => parseInt(val, 10));
     return bookPrice >= min && bookPrice <= max;
   };
-
+  const toggleChecklist = () => {
+    setShowChecklist(!showChecklist);
+  };
+  
+  const hideChecklist = () => {
+    setShowChecklist(false);
+  };
   return (
     <>
       <input
@@ -93,13 +113,26 @@ const Listings = () => {
         placeholder="Search books"
       />
       <div className="books">
-        <div className="filter">
-          <Checklist
-            selectedOptions={selectedOptions}
-            setSelectedOptions={setSelectedOptions}
-          />
-          <button onClick={applyFilters}>Filter</button>
-        </div>
+        {windowWidth > 720 || showChecklist ? (
+          <div className="filter">
+            <Checklist
+              selectedOptions={selectedOptions}
+              setSelectedOptions={setSelectedOptions}
+            />
+          </div>
+        ) : (
+          <button className="filters-button" onClick={toggleChecklist}>
+            Filters
+          </button>
+        )}
+        {showChecklist && (
+          <>
+          <button className="filters-button" onClick={toggleChecklist}>
+          Hide filters
+        </button>
+          <div className="checklist-overlay" onClick={hideChecklist} />
+          </>
+        )}
         <div className="listing-container">
           <div className="card-container">
             {filteredBooks.map((book) => (
@@ -110,6 +143,7 @@ const Listings = () => {
       </div>
     </>
   );
+  
 };
 
 
