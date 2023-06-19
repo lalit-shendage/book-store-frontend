@@ -37,7 +37,7 @@ const Checklist = ({ selectedOptions, setSelectedOptions }) => {
       [optionType]: selectedOption !== 'All' ? [selectedOption] : [],
     }));
   };
-  return (
+ return (
     <div className="checklist-container">
       <div className="checklist-group">
         <h3>Country</h3>

@@ -111,6 +111,7 @@ const Listings = () => {
         value={searchTerm}
         onChange={handleSearch}
         placeholder="Search books"
+        className='input-search'
       />
       <div className="books">
         {windowWidth > 720 || showChecklist ? (

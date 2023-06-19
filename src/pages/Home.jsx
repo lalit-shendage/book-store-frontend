@@ -47,32 +47,32 @@ const Home = () => {
     <div>
       {user && (
         <div className='container'>
-          <div className="Userdetails">
+          <div className="Userdetails ">
           <h2>User Details</h2>
           {editing ? (
             <>
-           <form className="user-form" onSubmit={handleSubmit}>
+           <form className="user-form card-home" onSubmit={handleSubmit}>
            <label className="form-label">
-             Name:
+             Name:<br/>
              <input className="form-input" type="text" name="name" value={updatedUser.name} onChange={handleInputChange} />
            </label>
            <label className="form-label">
-             Email:
+             Email:<br/>
              <input className="form-input" type="email" name="email" value={updatedUser.email} onChange={handleInputChange} />
            </label>
            <label className="form-label">
-             Address:
+             Address:<br/>
              <input className="form-input" type="text" name="address" value={updatedUser.address} onChange={handleInputChange} />
            </label>
-           <button className="form-button" type="submit">Save</button>
+           <button className="form-button btn" type="submit">Save</button>
          </form>
          </>
           ) : (
-            <div className="user-details">
+            <div className="user-details card-home">
             <p className="user-info">Name: {user.name}</p>
             <p className="user-info">Email: {user.email}</p>
             <p className="user-info">Address: {user.address}</p>
-            <button className="update-button" onClick={handleUpdateUser}>Update User</button>
+            <button className="update-button btn" onClick={handleUpdateUser}>Update User</button>
           </div>
           
           )}
@@ -82,7 +82,7 @@ const Home = () => {
           {orders.length > 0 ? (
              <ul className="order-list">
              {orders.map((order) => (
-               <li className="order-item" key={order._id}>
+               <li className="order-item card-home-order " key={order._id}>
                  <p className="order-id">Order ID: {order._id}</p>
                  <p className="total-books">Total Books: {calculateTotalBooks(order)}</p>
                  <p className="order-total">Order Total: {order.totalAmount}</p>
