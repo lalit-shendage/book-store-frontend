@@ -14,6 +14,7 @@ body{
   
   .order-item {
     height: 200px;
+    width: 150px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
     padding: 10px;
@@ -40,8 +41,10 @@ body{
   }
     
   .user-details {
+    width: 150px;
+    margin: auto;
     margin-top: 20px;
-    padding: 20px;
+    
     border: 1px solid #ccc;
     border-radius: 4px;
   }
@@ -50,17 +53,26 @@ body{
     margin-bottom: 10px;
   }
  
-  .container{
+  .container {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
-
+  
+  @media (max-width: 1000px) {
+    .container {
+      flex-direction: column;
+      margin: auto;
+    }
+  }
   .Userdetails{
-    width: 25%;
-    margin: 1rem 3rem;
+    align-items: center;
+    width: 25%; 
+    margin-top: 1rem;
   }
   .order{
     width: 30%;
-    margin: 1rem ;
+    margin: 0 ;
   }
   
   .Userdetails,.order{
@@ -70,7 +82,8 @@ body{
   .card-home {
     margin: auto;
     color: #ccc;
-    width: 350px;
+    min-width: 250px;
+    width: 25rem;
     height: 280px;
     background-color: rgba(33, 33, 33, 0.8);
     box-shadow: 15px 15px 30px #191919,
@@ -88,7 +101,8 @@ body{
     margin: auto;
     margin-top: 2rem;
     color: #ccc;
-    width: 350px;
+    min-width: 200px;
+    width: 25rem;
     height: 150px;
     background-color: rgba(33, 33, 33, 0.8);
     box-shadow: 15px 15px 30px #191919,

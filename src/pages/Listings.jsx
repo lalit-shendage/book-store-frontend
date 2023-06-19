@@ -106,6 +106,7 @@ const Listings = () => {
   };
   return (
     <>
+   
       <input
         type="text"
         value={searchTerm}

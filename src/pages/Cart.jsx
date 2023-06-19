@@ -57,6 +57,7 @@ const Cart = () => {
 
   
   const handleConfirmOrder = async () => {
+    window.alert('order placing')
     const bookIds = cart.map((book) => book._id);
     const quantities = cart.map((book) => book.quantity);
   
@@ -90,7 +91,7 @@ const Cart = () => {
           <th>Price</th>
           <th>Quantity</th>
           <th>Total Price</th>
-          <th>Actions</th>
+          <th>Remove</th>
         </tr>
       </thead>
       <tbody>
@@ -100,9 +101,9 @@ const Cart = () => {
             <td>{book.title}</td>
             <td>{book.price}</td>
             <td>
-              <button onClick={() => handleDecreaseQuantity(book._id)}>-</button>
+              <button className="qtybtn" onClick={() => handleDecreaseQuantity(book._id)}>-</button>
               {book.quantity}
-              <button onClick={() => handleIncreaseQuantity(book._id)}>+</button>
+              <button className="qtybtn" onClick={() => handleIncreaseQuantity(book._id)}>+</button>
             </td>
             <td>{book.price * book.quantity}</td>
             <td>
@@ -126,7 +127,8 @@ const Cart = () => {
       <label className="confirm-order-label">
         <input type="checkbox" /> Confirm Address
       </label>
-      <button className="confirm-order-button" onClick={handleConfirmOrder}>
+      <br/>
+      <button className="confirm-order-button btn" onClick={handleConfirmOrder}>
         Confirm Order
       </button>
     </div>

@@ -29,7 +29,6 @@ const Home = () => {
   const handleInputChange = (e) => {
     setUpdatedUser({ ...updatedUser, [e.target.name]: e.target.value });
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     editUser(updatedUser)
@@ -44,6 +43,7 @@ const Home = () => {
   };
 
   return (
+    <>
     <div>
       {user && (
         <div className='container'>
@@ -97,6 +97,7 @@ const Home = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

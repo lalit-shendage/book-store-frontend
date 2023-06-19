@@ -1,17 +1,20 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
-import '../assets/Navbar.css'
-
+import '../assets/Navbar.css';
 
 const Navbar = () => {
-  const {  logout } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleLogout = () => {
     logout();
     navigate('/');
   };
+
+  if (!user) {
+    return null; 
+  }
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light mx-auto">
@@ -34,7 +37,7 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      <button className="btn btn-primary" onClick={handleLogout}>
+      <button className="btn-primary" onClick={handleLogout}>
         Logout
       </button>
     </nav>
