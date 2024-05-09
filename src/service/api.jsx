@@ -1,7 +1,8 @@
-const BASE_URL = 'https://bookstore-backend-n9dn.onrender.com/';
+const BASE_URL = 'http://localhost:5000/';
 
-export const signUp = async (email, name, password) => {
+export const signUp = async (email, password, name) => {
     try {
+      console.log('email', email,'name', name,'password', password)
         console.log("sign in api")
       const response = await fetch(`${BASE_URL}register`, {
         method: 'POST',
